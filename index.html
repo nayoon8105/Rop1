@@ -5,7 +5,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<title>index.html</title>
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<style>
+		body{
+			padding-top: 50px;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -16,34 +21,53 @@
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<button id="startBtn" class="btn btn-primary">시작</button>
+				<button id="startBtn" class="btn btn-primary">클릭♡</button>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div>
+					<p class="glyphicon glyphicon-heart" style="display: none; color: blue"></p>
+				</div>
+			</div>
+			
+		</div>
 	</div>
-	<script src="js/jquery-3.3.1.js"></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="../js/jquery-3.3.1.js"></script>
+	<script src="../js/bootstrap.js"></script>
 	<script>
+		var percent=0;
+		var isheart=false;
 		$("#startBtn").click(function(){
+			if(!isheart){
+				$(".glyphicon-heart").show();
+				isheart=true;
+			}
 			// 프로그래서 값을 저장할 변수 선언하고 0 대입
-			var percent=0;
-			var id=setInterval(function(){
-				percent++;
-				$("#proBar").css("width",percent+"%").text(percent+"%");
+			
+			if(percent!=100){
+				percent+=5;
 
+				$("#proBar").css("width",percent+"%").text(percent+"%");
+				$(".glyphicon-heart").css("font-size",percent+"px");
 				if(percent==25){
 					$("#proBar").addClass("progress-bar-success");
+					$(".glyphicon-heart").css("color","green");
+					$("#startBtn").addClass("btn-success");
 				} else if(percent==55){
 					$("#proBar").addClass("progress-bar-warning");
+					$(".glyphicon-heart").css("color","orange");
+					$("#startBtn").addClass("btn-warning");
 				} else if(percent==80){
 					$("#proBar").addClass("progress-bar-danger");
-				} else 
-				// 100% 진행이 되었으면 인터벌 취소
-				if(percent==100){
-					clearInterval(id);
-				}
-			},100);
+					$(".glyphicon-heart").css("color","red");
+					$("#startBtn").addClass("btn-danger");
+				} 	
+			}
+			
+		});
 
-		})
+	
 	</script>
 </body>
 </html>
