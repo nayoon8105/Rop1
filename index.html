@@ -2,9 +2,48 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<title>index.html</title>
+	<link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
-	<h1>index.html</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="progress">
+					<div id="proBar" class="progress-bar progress-bar-primary progress-bar-striped active">0%</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<button id="startBtn" class="btn btn-primary">시작</button>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.3.1.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script>
+		$("#startBtn").click(function(){
+			// 프로그래서 값을 저장할 변수 선언하고 0 대입
+			var percent=0;
+			var id=setInterval(function(){
+				percent++;
+				$("#proBar").css("width",percent+"%").text(percent+"%");
+
+				if(percent==25){
+					$("#proBar").addClass("progress-bar-success");
+				} else if(percent==55){
+					$("#proBar").addClass("progress-bar-warning");
+				} else if(percent==80){
+					$("#proBar").addClass("progress-bar-danger");
+				} else 
+				// 100% 진행이 되었으면 인터벌 취소
+				if(percent==100){
+					clearInterval(id);
+				}
+			},100);
+
+		})
+	</script>
 </body>
 </html>
