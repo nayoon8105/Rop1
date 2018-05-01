@@ -21,8 +21,8 @@
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<button id="PlusBtn" class="btn btn-primary">사랑 더하기♥</button>
-				<button id="MinusBtn" class="btn btn-primary">사랑 빼기♡</button>
+				<button id="PlusBtn" class="btn btn-primary myTooltip" data-placement="top" title="당신의 사랑을 플러스!">사랑 더하기♥</button>
+				<button id="MinusBtn" class="btn btn-primary myTooltip" data-placement="bottom" title="당신의 사랑을 마이너스!">사랑 빼기♡</button>
 			</div>
 
 		</div>
@@ -38,6 +38,8 @@
 	<script src="../js/jquery-3.3.1.js"></script>
 	<script src="../js/bootstrap.js"></script>
 	<script>
+		$(".myTooltip").tooltip();
+
 		var percent=0;
 		var isheart=false;
 		$("#PlusBtn").click(function(){
@@ -96,8 +98,7 @@
 
 					$(".btn").addClass("btn-primary");
 					$(".btn").removeClass("btn-success");
-				}
-				
+				}			
 		}
 	
 	</script>
