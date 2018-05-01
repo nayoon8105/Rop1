@@ -21,8 +21,10 @@
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<button id="startBtn" class="btn btn-primary">클릭♡</button>
+				<button id="PlusBtn" class="btn btn-primary">사랑 더하기♥</button>
+				<button id="MinusBtn" class="btn btn-primary">사랑 빼기♡</button>
 			</div>
+
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
@@ -38,7 +40,7 @@
 	<script>
 		var percent=0;
 		var isheart=false;
-		$("#startBtn").click(function(){
+		$("#PlusBtn").click(function(){
 			if(!isheart){
 				$(".glyphicon-heart").show();
 				isheart=true;
@@ -47,26 +49,56 @@
 			
 			if(percent!=100){
 				percent+=5;
-
-				$("#proBar").css("width",percent+"%").text(percent+"%");
-				$(".glyphicon-heart").css("font-size",percent+"px");
-				if(percent==25){
-					$("#proBar").addClass("progress-bar-success");
-					$(".glyphicon-heart").css("color","green");
-					$("#startBtn").addClass("btn-success");
-				} else if(percent==55){
-					$("#proBar").addClass("progress-bar-warning");
-					$(".glyphicon-heart").css("color","orange");
-					$("#startBtn").addClass("btn-warning");
-				} else if(percent==80){
-					$("#proBar").addClass("progress-bar-danger");
-					$(".glyphicon-heart").css("color","red");
-					$("#startBtn").addClass("btn-danger");
-				} 	
+				showLove();
 			}
 			
 		});
+		$("#MinusBtn").click(function(){
+			if(percent!=0){
+				percent-=5;
+				showLove();
+			}
+		})
 
+		var showLove = function(){
+			$("#proBar").css("width",percent+"%").text(percent+"%");
+				$(".glyphicon-heart").css("font-size",percent+"px");
+				if(percent>=80){
+					$("#proBar").removeClass("progress-bar-warning");
+					$("#proBar").addClass("progress-bar-danger");
+					$(".glyphicon-heart").css("color","red");
+					$(".btn").removeClass("btn-warning");
+					$(".btn").addClass("btn-danger");
+				} else if(percent>=55){
+					$("#proBar").removeClass("progress-bar-success");
+					$("#proBar").addClass("progress-bar-warning");
+					$("#proBar").removeClass("progress-bar-danger");
+					$(".glyphicon-heart").css("color","orange");
+					$(".btn").removeClass("btn-success");
+					$(".btn").addClass("btn-warning");
+					$(".btn").removeClass("btn-danger");
+				}
+				else if(percent>=25){
+					$("#proBar").removeClass("progress-bar-primary");
+					$("#proBar").addClass("progress-bar-success");
+					$("#proBar").removeClass("progress-bar-warning");
+
+					$(".glyphicon-heart").css("color","green");
+
+					$(".btn").removeClass("btn-primary");
+					$(".btn").addClass("btn-success");
+					$(".btn").removeClass("btn-warning");
+				} else{
+					$("#proBar").addClass("progress-bar-primary");
+					$("#proBar").removeClass("progress-bar-success");
+
+					$(".glyphicon-heart").css("color","blue");
+
+					$(".btn").addClass("btn-primary");
+					$(".btn").removeClass("btn-success");
+				}
+				
+		}
 	
 	</script>
 </body>
