@@ -24,7 +24,6 @@
 				<button id="PlusBtn" class="btn btn-primary myTooltip" data-placement="top" title="당신의 사랑을 플러스!">사랑 더하기♥</button>
 				<button id="MinusBtn" class="btn btn-primary myTooltip" data-placement="bottom" title="당신의 사랑을 마이너스!">사랑 빼기♡</button>
 			</div>
-
 		</div>
 		<div class="row">
 			<div class="col-sm-4">
@@ -32,14 +31,12 @@
 					<p class="glyphicon glyphicon-heart" style="display: none; color: blue"></p>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 	<script src="../js/jquery-3.3.1.js"></script>
 	<script src="../js/bootstrap.js"></script>
 	<script>
 		$(".myTooltip").tooltip();
-
 		var percent=0;
 		var isheart=false;
 		$("#PlusBtn").click(function(){
@@ -53,17 +50,15 @@
 				percent+=5;
 				showLove();
 			}
-			
 		});
 		$("#MinusBtn").click(function(){
 			if(percent!=0){
 				percent-=5;
 				showLove();
 			}
-		})
-
+		});
 		var showLove = function(){
-			$("#proBar").css("width",percent+"%").text(percent+"%");
+			$("#proBar").css("width",percent+"%").text(percent+"%").css("font-size",percent*0.3+"px");
 				$(".glyphicon-heart").css("font-size",percent+"px");
 				if(percent>=80){
 					$("#proBar").removeClass("progress-bar-warning");
@@ -100,7 +95,6 @@
 					$(".btn").removeClass("btn-success");
 				}			
 		}
-	
 	</script>
 </body>
 </html>
