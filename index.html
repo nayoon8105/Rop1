@@ -54,13 +54,13 @@
 			
 			if(percent!=100){
 				percent+=5;
+				if(percent==100){
+					$("#hugImg").show().addClass("shake")
+					.one("animationend",function(){
+						$(this).hide().removeClass("shake");
+					});
+				}
 				showLove();
-			}else{
-				$("#hugImg").show().addClass("shake")
-				.one("animationend",function(){
-					$(this).hide().removeClass("shake");
-				});
-
 			}
 		});
 		$("#MinusBtn").click(function(){
